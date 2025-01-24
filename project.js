@@ -16,7 +16,7 @@ const displayproduct=(products)=>{
         <h5>${products.title}</h5>
         <h3>Price:${products.price}</h3>
         <p>${products.description}</p>
-        <button>Details</button>
+        <button onclick="singleproduct('${products.id}')">Details</button>
         <button onclick="handleaddtocart('${products.title}',${products.price})">Add To Cart</button>
         `;
 
@@ -53,6 +53,11 @@ const updatetotal=()=>{
     document.getElementById("total").innerText=count;
 }
 
+const singleproduct=(id)=>{
+    fetch(`https://fakestoreapi.com/products/${id}`)
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+}
 
 
 loadallproducts();
